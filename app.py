@@ -31,7 +31,7 @@ def index():
 
         # Get celebrity info from the Celebrity API
         celebrity_api_url = f'https://api.api-ninjas.com/v1/celebrity?name={celebrity_name}'
-        celebrity_response = requests.get(celebrity_api_url, headers={'X-Api-Key': 's8GKdhAloT0/1N8hJdgMgw==78NMK7N3VrO5Rf1V'})
+        celebrity_response = requests.get(celebrity_api_url, headers={'X-Api-Key': 'YOUR_API_KEY'})
         celebrity_json = celebrity_response.json()
         
         # Get the celebrity's info from the response
@@ -153,6 +153,6 @@ def new_game():
 
 
 if __name__ == '__main__':
-    app.secret_key = 'Happy12345'
+    app.secret_key = 'INSERT SECRET KEY HERE'
 
     app.run(debug=True)
