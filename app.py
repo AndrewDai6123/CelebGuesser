@@ -5,6 +5,7 @@ from urllib.parse import urljoin
 import re
 
 app = Flask(__name__)
+app.secret_key = 'Secret Key'
 
 @app.route('/')
 def index():
@@ -31,7 +32,7 @@ def index():
 
         # Get celebrity info from the Celebrity API
         celebrity_api_url = f'https://api.api-ninjas.com/v1/celebrity?name={celebrity_name}'
-        celebrity_response = requests.get(celebrity_api_url, headers={'X-Api-Key': 's8GKdhAloT0/1N8hJdgMgw==78NMK7N3VrO5Rf1V'})
+        celebrity_response = requests.get(celebrity_api_url, headers={'X-Api-Key': 'API KEY HERE'})
         celebrity_json = celebrity_response.json()
         
         # Get the celebrity's info from the response
@@ -45,7 +46,6 @@ def index():
         
         # Define the set of special characters
         special_chars =[]
-        
         # Create a list of boxes to represent the celebrity name
         boxes = []
         for c in celebrity_name:
@@ -120,7 +120,7 @@ def guess():
                 game_data['boxes'][i] = guess
         
         # Check if the player has guessed all the letters
-        if set(game_data['correct_letters']) == set(game_data['celebrity_name'].replace(' ', '')):
+        if set(game_data['celebrity_name'].replace(' ', '')).issubset(set(game_data['correct_letters'])) :
             # The player has won the game
             game_data['game_over'] = True
     else:
@@ -153,6 +153,5 @@ def new_game():
 
 
 if __name__ == '__main__':
-    app.secret_key = 'Happy12345'
 
     app.run(debug=True)

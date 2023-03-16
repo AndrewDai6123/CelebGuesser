@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>CelebGuesser - Celebrity Guessing Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
 </head>
@@ -13,40 +13,48 @@
             <div class="col-md-4 md-4 order-0">
 				<img src="{{ game_data['celebrity_image_url'] }}" alt="{{ game_data['celebrity_image_url'] }}" class="img-fluid">
 				{% if game_data['celebrity_gender'] %}
-                <h2>Gender:</h2>
-				<p class="mt-3">{{ game_data['celebrity_gender'] }}</p>
+				<p>Gender: {{ game_data['celebrity_gender'].capitalize() }}</p>
 				{% endif %}
+
                 {% if game_data['celebrity_occupation'] %}
-                <h2>Occupation:</h2>
-                <p class="mt-3">{{ ', '.join(game_data['celebrity_occupation']) }}</p>
+                <p>Occupation: {{ ', '.join(game_data['celebrity_occupation']) }}</p>
 				{% endif %}
 			</div>
 
             <div class="col-md-8">
                 <h1 class="mb-4">
                     {% for box in game_data['boxes'] %}
+                        {% if box =='-' %}
+                        <br>
+                        {% else %}
                         <span class="box">{{ box }}</span>
+                        {% endif %}
                     {% endfor %}
-                    </h1>
-				{% if game_data['game_over'] %}
-				{% if game_data['lives'] == 0 %}
-				<p>Sorry, you have lost the game.</p>
-				{% else %}
-				<p>Congratulations, you have won the game!</p>
-				{% endif %}
-				<p>The celebrity's name is {{ game_data['celebrity_name'] }}.</p>
-				<button type="button" class="btn btn-secondary" onclick="newGame(event)">New Game</button>
-				{% else %}
-				<form id="guess-form" method="POST" action="{{ url_for('guess') }}">
-					<div class="form-group">
-						<label for="guess">Guess a letter:</label>
-						<input type="text" class="form-control" id="guess" name="guess" maxlength="1" required autocomplete="off">
-					</div>
-					<button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
-					<p class="mt-3">Lives: {{ game_data['lives'] }}</p>
-					<!--<p class="mt-3">Incorrect letters: {{ game_data['incorrect_letters'] }}</p>-->
-				</form>
-				{% endif %}
+                </h1>
+
+                {% if game_data['game_over'] %}
+                    <p class="lives">Lives: {{ game_data['lives'] }}</p>
+                    {% if game_data['lives'] == 0 %}
+                    <p id="end-msg">Sorry, you have lost the game.</p>
+                    {% else %}
+                    <p id="end-msg">Congratulations, you have won the game!</p>
+                    {% endif %}
+                    <p>The celebrity's name is {{ game_data['celebrity_name'] }}.</p>
+                    <div id="popup" class="popup">Generating New Game...</div>
+                    <button type="button" class="btn btn-secondary" id ="new-game-btn" onclick="newGame(event)">New Game</button>
+                {% else %}
+                <form id="guess-form" method="POST" action="{{ url_for('guess') }}">
+                    <p class="lives">Lives: {{ game_data['lives'] }}</p>
+                    <div class="form-group">
+                        <label for="guess">Guess a letter of this celebrity's name:</label><br>
+                        <input readonly type="text" class="form-control" id="guess" name="guess" maxlength="1" required autocomplete="off">
+                    </div>
+
+                    <!--To show list of incorrect letters
+                        <p">Incorrect letters: {{ game_data['incorrect_letters'] }}</p>
+                    -->
+                </form>
+                {% endif %}
 
                 <div class="keyboard">
                     <div class="keyboard_row">
@@ -73,6 +81,7 @@
                         <div class="key {% if 'L' in game_data['correct_letters'] %}correct{% elif 'L' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="L">L</div>
                     </div>
                     <div class="keyboard_row">
+                        <button type="submit" form ="guess-form" class="key btn btn-primary" id="submit-btn">ENTER</button>
                         <div class="key {% if 'Z' in game_data['correct_letters'] %}correct{% elif 'Z' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="Z">Z</div>
                         <div class="key {% if 'X' in game_data['correct_letters'] %}correct{% elif 'X' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="X">X</div>
                         <div class="key {% if 'C' in game_data['correct_letters'] %}correct{% elif 'C' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="C">C</div>
@@ -80,6 +89,7 @@
                         <div class="key {% if 'B' in game_data['correct_letters'] %}correct{% elif 'B' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="B">B</div>
                         <div class="key {% if 'N' in game_data['correct_letters'] %}correct{% elif 'N' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="N">N</div>
                         <div class="key {% if 'M' in game_data['correct_letters'] %}correct{% elif 'M' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="M">M</div>
+                        <div class="key key-backspace" data-letter="BACKSPACE">⌫</div>
                     </div>
                 </div>                
 			</div>
