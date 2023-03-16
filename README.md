@@ -2,7 +2,7 @@
 CelebGuesser is a web application that challenges users to guess the names of celebrities based on their photos. Users can play the game and test their knowledge of popular celebrities. The application is built using HTML, CSS, JavaScript, and Python.
 
 ## Getting Started
-To play CelebGuesser, simply visit the deployed web application at [INSERT DEPLOYED WEB APPLICATION URL HERE].
+To play CelebGuesser, simply visit the deployed web application at http://celebguesser.pythonanywhere.com/.
 
 To run the application locally, follow these steps:
 
