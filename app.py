@@ -50,7 +50,7 @@ def index():
         boxes = []
         for c in celebrity_name:
             if c.isalpha():
-                boxes.append('_')
+                boxes.append('☐')
             elif c.isspace():
                 boxes.append('-')
             else:
@@ -67,7 +67,7 @@ def index():
             'celebrity_image_url': celebrity_image_url,
             'celebrity_occupation': celebrity_occupation,
             'boxes': boxes,
-            'lives': 10,
+            'lives': 8,
             'correct_letters': []+special_chars,
             'incorrect_letters': [],
             'celebrity_gender': celebrity_gender,
