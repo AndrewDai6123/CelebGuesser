@@ -5,9 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
 </head>
 <body>
+    <div class="header"></div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle" onclick="getStats()">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+    </label>
+    <div id="sidebarMenu">
+        <ul class="sidebarMenuInner">
+        <li>CelebGuesser <span>Developer - Andrew Dai</span></li>
+        <li><a href="https://github.com/AndrewDai6123" target="_blank">GITHUB</a></li>
+        <li><a href="https://www.linkedin.com/in/andrew-dai-03a898214/" target="_blank">Linkedin</a></li>
+        </ul>
+        <div class="stats">
+            <canvas id="lives-chart"></canvas>
+        </div>
+    </div>
 	<div class="container mt-5">
 		<div class="row">
             <div class="col-md-4 md-4 order-0">
@@ -33,7 +51,8 @@
                 </h1>
 
                 {% if game_data['game_over'] %}
-                    <p class="lives">Lives: {{ game_data['lives'] }}</p>
+                    <p class="lives">Lives: </p>
+                    <p class="lives" id="lives-left">{{ game_data['lives'] }}</p>
                     {% if game_data['lives'] == 0 %}
                     <p id="end-msg">Sorry, you have lost the game.</p>
                     {% else %}
@@ -81,7 +100,7 @@
                         <div class="key {% if 'L' in game_data['correct_letters'] %}correct{% elif 'L' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="L">L</div>
                     </div>
                     <div class="keyboard_row">
-                        <button type="submit" form ="guess-form" class="key btn btn-primary" id="submit-btn">ENTER</button>
+                        <button type="button" form ="guess-form" class="key btn btn-primary" id="submit-btn" onclick="checkInput()">ENTER</button>
                         <div class="key {% if 'Z' in game_data['correct_letters'] %}correct{% elif 'Z' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="Z">Z</div>
                         <div class="key {% if 'X' in game_data['correct_letters'] %}correct{% elif 'X' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="X">X</div>
                         <div class="key {% if 'C' in game_data['correct_letters'] %}correct{% elif 'C' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="C">C</div>
