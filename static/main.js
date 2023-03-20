@@ -73,7 +73,7 @@ function getStats(){
   // Get lives data from local storage
   const livesDict = JSON.parse(localStorage.getItem("livesDict")) || {};
   const livesData = [];
-  for (let i = 10; i >= 0; i--) {
+  for (let i = 8; i >= 0; i--) {
     livesData.push(livesDict[i] || 0);
   }
 
@@ -98,7 +98,7 @@ function getStats(){
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: Array.from(Array(11).keys()).reverse(),
+      labels: Array.from(Array(9).keys()).reverse(),
       datasets: [
         {
           label: "LIVES DISTRIBUTION",
