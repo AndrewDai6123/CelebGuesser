@@ -50,7 +50,7 @@ def index():
         boxes = []
         for c in celebrity_name:
             if c.isalpha():
-                boxes.append('_')
+                boxes.append('☐')
             elif c.isspace():
                 boxes.append('-')
             else:
