@@ -5,7 +5,7 @@ from urllib.parse import urljoin
 import re
 
 app = Flask(__name__)
-app.secret_key = 'Secret Key'
+app.secret_key = 'Happy12345'
 
 @app.route('/')
 def index():
@@ -32,7 +32,7 @@ def index():
 
         # Get celebrity info from the Celebrity API
         celebrity_api_url = f'https://api.api-ninjas.com/v1/celebrity?name={celebrity_name}'
-        celebrity_response = requests.get(celebrity_api_url, headers={'X-Api-Key': 'YOUR_API_KEY'})
+        celebrity_response = requests.get(celebrity_api_url, headers={'X-Api-Key': 's8GKdhAloT0/1N8hJdgMgw==78NMK7N3VrO5Rf1V'})
         celebrity_json = celebrity_response.json()
         
         # Get the celebrity's info from the response
@@ -67,7 +67,7 @@ def index():
             'celebrity_image_url': celebrity_image_url,
             'celebrity_occupation': celebrity_occupation,
             'boxes': boxes,
-            'lives': 10,
+            'lives': 8,
             'correct_letters': []+special_chars,
             'incorrect_letters': [],
             'celebrity_gender': celebrity_gender,

@@ -20,13 +20,13 @@
         <ul class="sidebarMenuInner">
         <li>CelebGuesser <span>Developer - Andrew Dai</span></li>
         <li><a href="https://github.com/AndrewDai6123" target="_blank">GITHUB</a></li>
-        <li><a href="https://www.linkedin.com/in/andrew-dai-03a898214/" target="_blank">Linkedin</a></li>
+        <li><a href="https://www.linkedin.com/in/andrew-dai-03a898214/" target="_blank">LinkedIn</a></li>
         </ul>
         <div class="stats">
             <canvas id="lives-chart"></canvas>
         </div>
     </div>
-	<div class="container mt-5">
+	<div class="container">
 		<div class="row">
             <div class="col-md-4 md-4 order-0">
 				<img src="{{ game_data['celebrity_image_url'] }}" alt="{{ game_data['celebrity_image_url'] }}" class="img-fluid">
@@ -74,45 +74,45 @@
                     -->
                 </form>
                 {% endif %}
-
-                <div class="keyboard">
-                    <div class="keyboard_row">
-                        <div class="key {% if 'Q' in game_data['correct_letters'] %}correct{% elif 'Q' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="Q">Q</div>
-                        <div class="key {% if 'W' in game_data['correct_letters'] %}correct{% elif 'W' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="W">W</div>
-                        <div class="key {% if 'E' in game_data['correct_letters'] %}correct{% elif 'E' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="E">E</div>
-                        <div class="key {% if 'R' in game_data['correct_letters'] %}correct{% elif 'R' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="R">R</div>
-                        <div class="key {% if 'T' in game_data['correct_letters'] %}correct{% elif 'T' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="T">T</div>
-                        <div class="key {% if 'Y' in game_data['correct_letters'] %}correct{% elif 'Y' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="Y">Y</div>
-                        <div class="key {% if 'U' in game_data['correct_letters'] %}correct{% elif 'U' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="U">U</div>
-                        <div class="key {% if 'I' in game_data['correct_letters'] %}correct{% elif 'I' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="I">I</div>
-                        <div class="key {% if 'O' in game_data['correct_letters'] %}correct{% elif 'O' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="O">O</div>
-                        <div class="key {% if 'P' in game_data['correct_letters'] %}correct{% elif 'P' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="P">P</div>
-                    </div>
-                    <div class="keyboard_row">
-                        <div class="key {% if 'A' in game_data['correct_letters'] %}correct{% elif 'A' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="A">A</div>
-                        <div class="key {% if 'S' in game_data['correct_letters'] %}correct{% elif 'S' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="S">S</div>
-                        <div class="key {% if 'D' in game_data['correct_letters'] %}correct{% elif 'D' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="D">D</div>
-                        <div class="key {% if 'F' in game_data['correct_letters'] %}correct{% elif 'F' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="F">F</div>
-                        <div class="key {% if 'G' in game_data['correct_letters'] %}correct{% elif 'G' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="G">G</div>
-                        <div class="key {% if 'H' in game_data['correct_letters'] %}correct{% elif 'H' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="H">H</div>
-                        <div class="key {% if 'J' in game_data['correct_letters'] %}correct{% elif 'J' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="J">J</div>
-                        <div class="key {% if 'K' in game_data['correct_letters'] %}correct{% elif 'K' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="K">K</div>
-                        <div class="key {% if 'L' in game_data['correct_letters'] %}correct{% elif 'L' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="L">L</div>
-                    </div>
-                    <div class="keyboard_row">
-                        <button type="button" form ="guess-form" class="key btn btn-primary" id="submit-btn" onclick="checkInput()">ENTER</button>
-                        <div class="key {% if 'Z' in game_data['correct_letters'] %}correct{% elif 'Z' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="Z">Z</div>
-                        <div class="key {% if 'X' in game_data['correct_letters'] %}correct{% elif 'X' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="X">X</div>
-                        <div class="key {% if 'C' in game_data['correct_letters'] %}correct{% elif 'C' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="C">C</div>
-                        <div class="key {% if 'V' in game_data['correct_letters'] %}correct{% elif 'V' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="V">V</div>
-                        <div class="key {% if 'B' in game_data['correct_letters'] %}correct{% elif 'B' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="B">B</div>
-                        <div class="key {% if 'N' in game_data['correct_letters'] %}correct{% elif 'N' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="N">N</div>
-                        <div class="key {% if 'M' in game_data['correct_letters'] %}correct{% elif 'M' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="M">M</div>
-                        <div class="key key-backspace" data-letter="BACKSPACE">⌫</div>
-                    </div>
-                </div>                
+                
 			</div>
 		</div>
+        <div class="keyboard">
+            <div class="keyboard_row">
+                <div class="key {% if 'Q' in game_data['correct_letters'] %}correct{% elif 'Q' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="Q">Q</div>
+                <div class="key {% if 'W' in game_data['correct_letters'] %}correct{% elif 'W' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="W">W</div>
+                <div class="key {% if 'E' in game_data['correct_letters'] %}correct{% elif 'E' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="E">E</div>
+                <div class="key {% if 'R' in game_data['correct_letters'] %}correct{% elif 'R' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="R">R</div>
+                <div class="key {% if 'T' in game_data['correct_letters'] %}correct{% elif 'T' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="T">T</div>
+                <div class="key {% if 'Y' in game_data['correct_letters'] %}correct{% elif 'Y' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="Y">Y</div>
+                <div class="key {% if 'U' in game_data['correct_letters'] %}correct{% elif 'U' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="U">U</div>
+                <div class="key {% if 'I' in game_data['correct_letters'] %}correct{% elif 'I' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="I">I</div>
+                <div class="key {% if 'O' in game_data['correct_letters'] %}correct{% elif 'O' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="O">O</div>
+                <div class="key {% if 'P' in game_data['correct_letters'] %}correct{% elif 'P' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="P">P</div>
+            </div>
+            <div class="keyboard_row">
+                <div class="key {% if 'A' in game_data['correct_letters'] %}correct{% elif 'A' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="A">A</div>
+                <div class="key {% if 'S' in game_data['correct_letters'] %}correct{% elif 'S' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="S">S</div>
+                <div class="key {% if 'D' in game_data['correct_letters'] %}correct{% elif 'D' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="D">D</div>
+                <div class="key {% if 'F' in game_data['correct_letters'] %}correct{% elif 'F' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="F">F</div>
+                <div class="key {% if 'G' in game_data['correct_letters'] %}correct{% elif 'G' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="G">G</div>
+                <div class="key {% if 'H' in game_data['correct_letters'] %}correct{% elif 'H' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="H">H</div>
+                <div class="key {% if 'J' in game_data['correct_letters'] %}correct{% elif 'J' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="J">J</div>
+                <div class="key {% if 'K' in game_data['correct_letters'] %}correct{% elif 'K' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="K">K</div>
+                <div class="key {% if 'L' in game_data['correct_letters'] %}correct{% elif 'L' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="L">L</div>
+            </div>
+            <div class="keyboard_row">
+                <button type="button" form ="guess-form" class="key btn btn-primary" id="submit-btn" onclick="checkInput()">ENTER</button>
+                <div class="key {% if 'Z' in game_data['correct_letters'] %}correct{% elif 'Z' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="Z">Z</div>
+                <div class="key {% if 'X' in game_data['correct_letters'] %}correct{% elif 'X' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="X">X</div>
+                <div class="key {% if 'C' in game_data['correct_letters'] %}correct{% elif 'C' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="C">C</div>
+                <div class="key {% if 'V' in game_data['correct_letters'] %}correct{% elif 'V' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="V">V</div>
+                <div class="key {% if 'B' in game_data['correct_letters'] %}correct{% elif 'B' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="B">B</div>
+                <div class="key {% if 'N' in game_data['correct_letters'] %}correct{% elif 'N' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="N">N</div>
+                <div class="key {% if 'M' in game_data['correct_letters'] %}correct{% elif 'M' in game_data['incorrect_letters'] %}disabled{% endif %}" data-letter="M">M</div>
+                <div class="key key-backspace" data-letter="BACKSPACE">⌫</div>
+            </div>
+        </div>
 	</div>
 </body>
 </html>
