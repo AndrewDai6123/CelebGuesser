@@ -5,7 +5,7 @@ from urllib.parse import urljoin
 import re
 
 app = Flask(__name__)
-app.secret_key = 'Happy12345'
+app.secret_key = ''
 
 @app.route('/')
 def index():
